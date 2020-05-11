@@ -57,7 +57,6 @@ def showcase1():
     Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,X,g2_ID_bounded)
     print("dim(HH(N(τ_A᛫τ_B᛫τ_C᛫τ_D))=" + str(dimHH(Y)))
     elapsed = timeit.default_timer() - start_time
-    print("Time it took to compute: "+str(elapsed)+"seconds")
 
     print("\n6_2 knot has genus 2, and is fibered with monodromy τ_A᛫τ_B᛫τ_C᛫τ_D^{-1}. Its knot Floer homology in the second to lowest Alexander grading has dimension 3. Lets see this using Hochschild homology computation:")
     print("Computing HH(N(τ_A᛫τ_B᛫τ_C᛫τ_D^{-1}))...")
@@ -66,7 +65,6 @@ def showcase1():
     Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,X,g2_ID_bounded)
     print("dim(HH(N(τ_A᛫τ_B᛫τ_C᛫τ_D^{-1}))=" + str(dimHH(Y)))
     elapsed = timeit.default_timer() - start_time
-    print("Time it took to compute: "+str(elapsed)+"seconds")
 
     print("\n7_6 knot has genus 2, and is fibered with monodromy τ_A᛫τ_B᛫τ_C^{-1}᛫τ_D. Its knot Floer homology in the second to lowest Alexander grading has dimension 5. Lets see this using Hochschild homology computation:")
     print("Computing HH(N(τ_A᛫τ_B᛫τ_C^{-1}᛫τ_D))...")
@@ -75,7 +73,6 @@ def showcase1():
     Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,X,g2_ID_bounded)
     print("dim(HH(N(τ_A᛫τ_B᛫τ_C^{-1}᛫τ_D^))=" + str(dimHH(Y)))
     elapsed = timeit.default_timer() - start_time
-    print("Time it took to compute: "+str(elapsed)+"seconds")
 
 
 def showcase2():
