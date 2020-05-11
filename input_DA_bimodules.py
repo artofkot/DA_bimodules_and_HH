@@ -980,7 +980,7 @@ def init_g2_M_RHD(g2_A):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_M_RHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_E)")
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_K_LHD(g2_A):
     gen_by_name=AttrDict({
@@ -1106,7 +1106,7 @@ def init_g2_K_LHD(g2_A):
 
         arrows[new_arrow]+=1
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_K_LHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_A^{-1})")
 
 def init_g2_M_LHD(g2_A):
     gen_by_name=AttrDict({
@@ -1212,7 +1212,7 @@ def init_g2_M_LHD(g2_A):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_M_LHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_E^{-1})")
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_K_RHD(g2_A):
     gen_by_name=AttrDict({
@@ -1335,7 +1335,7 @@ def init_g2_K_RHD(g2_A):
         arrows[new_arrow]+=1
 
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_K_RHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_A)")
 
 def init_g2_L_RHD(g2_A):
     gen_by_name=AttrDict({
@@ -1447,7 +1447,7 @@ def init_g2_L_RHD(g2_A):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_L_RHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_D)")
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_N_LHD(g2_A):
     gen_by_name=AttrDict({
@@ -1575,7 +1575,7 @@ def init_g2_N_LHD(g2_A):
 
         arrows[new_arrow]+=1
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_N_LHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_B^{-1})")
 
 def init_g2_L_LHD(g2_A):
     gen_by_name=AttrDict({
@@ -1677,7 +1677,7 @@ def init_g2_L_LHD(g2_A):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_L_LHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_D^{-1})")
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_N_RHD(g2_A):
     gen_by_name=AttrDict({
@@ -1795,7 +1795,7 @@ def init_g2_N_RHD(g2_A):
 
         arrows[new_arrow]+=1
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_N_RHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_B)")
 
 def init_g2_T_LHD(g2_A):
     gen_by_name=AttrDict({
@@ -2016,7 +2016,7 @@ def init_g2_T_LHD(g2_A):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_T_LHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_C^{-1})")
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_T_RHD(g2_A):
     gen_by_name=AttrDict({
@@ -2239,7 +2239,7 @@ def init_g2_T_RHD(g2_A):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_T_RHD")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_C)")
 
 
 g2_ID=init_g2_ID(g2_A)

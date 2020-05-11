@@ -111,23 +111,21 @@ D_inv=g2_L_LHD
 E_inv=g2_M_LHD
 
 ##### checking relations
-X=da_da_box_tensor_many_efficient_cancelations(A_,B_,C_,D_,E_,E_,D_,C_,B_,A_)
-Z_=da_da_box_tensor_many_efficient_cancelations(E_,D_,C_,B_)
-Z=da_da_box_tensor_many_efficient_cancelations(Z_,Z_,Z_,Z_,Z_)
+# X=da_da_box_tensor_many_efficient_cancelations(A_,B_,C_,D_,E_,E_,D_,C_,B_,A_)
+# Z_=da_da_box_tensor_many_efficient_cancelations(E_,D_,C_,B_)
+# Z=da_da_box_tensor_many_efficient_cancelations(Z_,Z_,Z_,Z_,Z_)
 # X.show()
-print(are_equal_smart_da(X,Z))
+# print(are_equal_smart_da(X,Z))
 
 ##### computing HH 
-# start_time = timeit.default_timer()
-# X=da_da_box_tensor_many_efficient_cancelations(D_inv,C_inv,B_inv, A_inv)
-# X=da_da_box_tensor_many_efficient_cancelations(X, X, X, X, X, X, X ,X ,X ,X)
-# X=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,X,g2_ID_bounded)
-# X.show_short()
-# print("\ndim(HH)=" + str(dimHH(X)))
-# elapsed = timeit.default_timer() - start_time
-# print elapsed
-# HC=CH(X)
-# HC.show()
+start_time = timeit.default_timer()
+X=da_da_box_tensor_many_efficient_cancelations(A_,B_,C_,D_,C_,A_,B_,E_)
+X=da_da_box_tensor_many_efficient_cancelations(X,X,X)
+X=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,X,g2_ID_bounded)
+X.show_short()
+print("\ndim(HH)=" + str(dimHH(X)))
+elapsed = timeit.default_timer() - start_time
+print(elapsed)
 
 ##### experiment, that shows that order of elements in the product matters for HH
 ##### (cyclic order doesnt matter due to conjugation invariance)

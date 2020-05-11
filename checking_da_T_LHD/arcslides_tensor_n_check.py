@@ -3,7 +3,7 @@ import sys
 # sys.path.append('../../')
 sys.path.append('../')
 
-from algebraic_structures.algebra import torus_A
+from algebraic_structures.specific_algebras_modules_bimodules import torus_A
 
 from input_DA_bimodules import (
     ID1,g2_M_RHD,g2_ID,g2_T_LHD) 
@@ -21,7 +21,7 @@ from algebraic_structures.da_bimodule import (
     DA_bimodule)
 
 from algebraic_structures.aa_bimodule import (
-    AA_bimodule, a_A_a,
+    AA_bimodule, a_AA_a,
     aa_randomly_cancel_until_possible)
 
 from algebraic_structures.dualization import (
@@ -34,7 +34,7 @@ from algebraic_structures.tensoring import (
  da_da_box_tensor_product,
  da_da_box_tensor_many_efficient_cancelations )
 
-from algebras_from_Bohua_program import (
+from .algebras_from_Bohua_program import (
     B1,A_pmc1_str3,
     B2,
     B3,
@@ -357,13 +357,12 @@ K_pmc1=init_DD_pmc1(B1,A_pmc1_str3)
 DA_pmc1=g2_ID
 
 ####### experimenting with M_RHD
-g2_M_RHD=g2_M_RHD
-# g2_M_RHD.show()
-DD_pmc1_M_RHD=init_DD_pmc1_M_RHD(B1,A_pmc1_str3)
-mb_dd=da_dd_box_tensor_product(g2_M_RHD,K_pmc1)
+# g2_M_RHD=g2_M_RHD
+# # g2_M_RHD.show()
+# DD_pmc1_M_RHD=init_DD_pmc1_M_RHD(B1,A_pmc1_str3)
+# mb_dd=da_dd_box_tensor_product(g2_M_RHD,K_pmc1)
 
 # YES, THEY ARE EQUAL!
-
 
 
 ### DA1 arcslide
@@ -485,7 +484,7 @@ def init_DA1(B1,B2):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,B1,B2,name="DA1")
+    return DA_bimodule(gen_by_name,arrows,B1,B2,name="N(η)")
 DA1=init_DA1(B1,B2)
 # DA1.show_for_tex()
 
@@ -613,7 +612,7 @@ def init_DA2(B2,B3):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,B2,B3,name="DA2")
+    return DA_bimodule(gen_by_name,arrows,B2,B3,name="N(μ_1)")
 DA2=init_DA2(B2,B3)
 # DA2.show_for_tex()
 
@@ -748,7 +747,7 @@ def init_DA3(B3,B4):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,B3,B4,name="DA3")
+    return DA_bimodule(gen_by_name,arrows,B3,B4,name="N(μ_2)")
 DA3=init_DA3(B3,B4)
 # DA3.show_for_tex()
 
@@ -895,7 +894,7 @@ def init_DA4(B4,B5):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,B4,B5,name="DA4")
+    return DA_bimodule(gen_by_name,arrows,B4,B5,name="N(μ_3)")
 DA4=init_DA4(B4,B5)
 # DA4.show_for_tex()
 
@@ -1033,7 +1032,7 @@ def init_DA5(B5,B6):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,B5,B6,name="DA5")
+    return DA_bimodule(gen_by_name,arrows,B5,B6,name="N(μ_4)")
 DA5=init_DA5(B5,B6)
 # DA5.show_for_tex()
 
@@ -1153,151 +1152,178 @@ def init_DA6(B6,B1):
 
         ])
 
-    return DA_bimodule(gen_by_name,arrows,B6,B1,name="DA6")
+    return DA_bimodule(gen_by_name,arrows,B6,B1,name="N(η^{-1})")
 DA6=init_DA6(B6,B1)
 # DA6.show_for_tex()
 
 ### FINAL COMPUTATION - WORKS!
-# WOW_DA=da_da_box_tensor_many_efficient_cancelations(DA1,DA2,DA3,DA4,DA5,DA6)
-# g2_T_LHD_red=da_randomly_cancel_until_possible(g2_T_LHD)
-# in_red(are_equal_smart_da(WOW_DA,g2_T_LHD_red))
+WOW_DA=da_da_box_tensor_many_efficient_cancelations(DA1,DA2,DA3,DA4,DA5,DA6)
+g2_T_LHD_red=da_randomly_cancel_until_possible(g2_T_LHD)
+
+print("Below we compute the tensor product of 6 arc-slide bimodules, and verify that it is homotopy equivalent to N(τ_C^{-1}).\n")
+print("We first describe all the 6 arc-slide bimodules:")
+for X in [DA1,DA2,DA3,DA4,DA5,DA6]:
+    X.show_short()
+print("Next we describe the tensor product of 6 bimodules")  
+WOW_DA.show_short()
+print("Next we describe the bimodule N(τ_C^{-1})")  
+g2_T_LHD.show_short()
+print("Next we describe the bimodule N(τ_C^{-1}), but simplified with the one possible cancellation")
+g2_T_LHD_red.show_short()
+print("Next we check if the two bimodules in question are isomorphic:")
+are_equal_smart_da(WOW_DA,g2_T_LHD_red)
+print('\nType "yes" and press enter if you want more details about the bimodules and the isomorphism between them; type "no" and press enter otherwise.')
+input1= input()
+if input1=='yes':
+    print("We first describe all the 6 arc-slide bimodules.")
+    for X in [DA1,DA2,DA3,DA4,DA5,DA6]:
+        X.show()
+    print("Next we describe the tensor product of 6 bimodules (already maximally canceled)")  
+    WOW_DA.show()
+    print("Next we describe the bimodule N(τ_C^{-1}), simplified with the one possible cancellation")
+    g2_T_LHD_red.show()
+    print("Next we check if the two bimodules in question are isomorphic:")
+    are_equal_smart_da(WOW_DA,g2_T_LHD_red,verbose=True)
+    
+
+
 
 ############# genus=1 playing around with AA(id) - not important
-def init_g1_DD_id(torus_A,torus_A2):
-    gen_by_name=AttrDict({ 
-            "(i0⊗i1)": Generator("(i0⊗i1)"),
-            "(i1⊗i0)": Generator("(i1⊗i0)"),
-            })
+# def init_g1_DD_id(torus_A,torus_A2):
+#     gen_by_name=AttrDict({ 
+#             "(i0⊗i1)": Generator("(i0⊗i1)"),
+#             "(i1⊗i0)": Generator("(i1⊗i0)"),
+#             })
 
-    gen_by_name['(i0⊗i1)'].add_idems(torus_A.idem_by_name.i0,torus_A2.idem_by_name.i1 )
-    gen_by_name['(i1⊗i0)'].add_idems(torus_A.idem_by_name.i1,torus_A2.idem_by_name.i0)
+#     gen_by_name['(i0⊗i1)'].add_idems(torus_A.idem_by_name.i0,torus_A2.idem_by_name.i1 )
+#     gen_by_name['(i1⊗i0)'].add_idems(torus_A.idem_by_name.i1,torus_A2.idem_by_name.i0)
 
-    dd_arrows=Bunch_of_arrows([
-                    (gen_by_name['(i0⊗i1)'],
-        torus_A.gen_by_name['r1'], 
-        gen_by_name['(i1⊗i0)'], 
-        torus_A2.gen_by_name['r1']),
+#     dd_arrows=Bunch_of_arrows([
+#                     (gen_by_name['(i0⊗i1)'],
+#         torus_A.gen_by_name['r1'], 
+#         gen_by_name['(i1⊗i0)'], 
+#         torus_A2.gen_by_name['r1']),
 
-                    (gen_by_name['(i0⊗i1)'],
-        torus_A.gen_by_name['r3'], 
-        gen_by_name['(i1⊗i0)'], 
-        torus_A2.gen_by_name['r3']),
+#                     (gen_by_name['(i0⊗i1)'],
+#         torus_A.gen_by_name['r3'], 
+#         gen_by_name['(i1⊗i0)'], 
+#         torus_A2.gen_by_name['r3']),
 
-                    (gen_by_name['(i0⊗i1)'],
-        torus_A.gen_by_name['r123'], 
-        gen_by_name['(i1⊗i0)'], 
-        torus_A2.gen_by_name['r123']),
+#                     (gen_by_name['(i0⊗i1)'],
+#         torus_A.gen_by_name['r123'], 
+#         gen_by_name['(i1⊗i0)'], 
+#         torus_A2.gen_by_name['r123']),
 
-                    (gen_by_name['(i1⊗i0)'],
-        torus_A.gen_by_name['r2'], 
-        gen_by_name['(i0⊗i1)'], 
-        torus_A2.gen_by_name['r2']),
+#                     (gen_by_name['(i1⊗i0)'],
+#         torus_A.gen_by_name['r2'], 
+#         gen_by_name['(i0⊗i1)'], 
+#         torus_A2.gen_by_name['r2']),
 
-        ])
+#         ])
     
-    return DD_bimodule(gen_by_name,dd_arrows,torus_A,torus_A2,name="g1_DD_id")
-def init_g1_AA_id(torus_A,torus_A2):
-    gen_by_name=AttrDict({
-            "y": Generator("y"),
-            "x": Generator("x"),
-            "w1": Generator("w1"),
-            "w2": Generator("w2"),
-            "z1": Generator("z1"),
-            "z2": Generator("z2"),
-            })
+#     return DD_bimodule(gen_by_name,dd_arrows,torus_A,torus_A2,name="g1_DD_id")
+# def init_g1_AA_id(torus_A,torus_A2):
+#     gen_by_name=AttrDict({
+#             "y": Generator("y"),
+#             "x": Generator("x"),
+#             "w1": Generator("w1"),
+#             "w2": Generator("w2"),
+#             "z1": Generator("z1"),
+#             "z2": Generator("z2"),
+#             })
 
-    gen_by_name.y.add_idems(torus_A.idem_by_name.i0,torus_A2.idem_by_name.i1 )
-    gen_by_name.x.add_idems(torus_A.idem_by_name.i1,torus_A2.idem_by_name.i0)
-    gen_by_name.z1.add_idems(torus_A.idem_by_name.i1,torus_A2.idem_by_name.i1 )
-    gen_by_name.z2.add_idems(torus_A.idem_by_name.i1,torus_A2.idem_by_name.i1)
-    gen_by_name.w1.add_idems(torus_A.idem_by_name.i0,torus_A2.idem_by_name.i0 )
-    gen_by_name.w2.add_idems(torus_A.idem_by_name.i0,torus_A2.idem_by_name.i0)
+#     gen_by_name.y.add_idems(torus_A.idem_by_name.i0,torus_A2.idem_by_name.i1 )
+#     gen_by_name.x.add_idems(torus_A.idem_by_name.i1,torus_A2.idem_by_name.i0)
+#     gen_by_name.z1.add_idems(torus_A.idem_by_name.i1,torus_A2.idem_by_name.i1 )
+#     gen_by_name.z2.add_idems(torus_A.idem_by_name.i1,torus_A2.idem_by_name.i1)
+#     gen_by_name.w1.add_idems(torus_A.idem_by_name.i0,torus_A2.idem_by_name.i0 )
+#     gen_by_name.w2.add_idems(torus_A.idem_by_name.i0,torus_A2.idem_by_name.i0)
 
-    dd_arrows=Bunch_of_arrows([
-            ((torus_A.gen_by_name['r2'],),
-            gen_by_name.y,
-            (torus_A2.gen_by_name['r2'],),
-            gen_by_name.x),
+#     dd_arrows=Bunch_of_arrows([
+#             ((torus_A.gen_by_name['r2'],),
+#             gen_by_name.y,
+#             (torus_A2.gen_by_name['r2'],),
+#             gen_by_name.x),
 
-            ((torus_A.gen_by_name['r2'],),
-            gen_by_name.y,
-            (torus_A2.gen_by_name['r23'],),
-            gen_by_name.z2),
+#             ((torus_A.gen_by_name['r2'],),
+#             gen_by_name.y,
+#             (torus_A2.gen_by_name['r23'],),
+#             gen_by_name.z2),
 
-            ((torus_A.gen_by_name['r12'],),
-            gen_by_name.y,
-            (torus_A2.gen_by_name['r2'],),
-            gen_by_name.w2),
+#             ((torus_A.gen_by_name['r12'],),
+#             gen_by_name.y,
+#             (torus_A2.gen_by_name['r2'],),
+#             gen_by_name.w2),
 
-            ((),
-            gen_by_name.w1,
-            (torus_A2.gen_by_name['r1'],),
-            gen_by_name.y),
+#             ((),
+#             gen_by_name.w1,
+#             (torus_A2.gen_by_name['r1'],),
+#             gen_by_name.y),
 
-            ((torus_A.gen_by_name['r3'],),
-            gen_by_name.z1,
-            (),
-            gen_by_name.y),
+#             ((torus_A.gen_by_name['r3'],),
+#             gen_by_name.z1,
+#             (),
+#             gen_by_name.y),
 
-            ((torus_A2.gen_by_name['r2'],),
-            gen_by_name.w1,
-            (torus_A2.gen_by_name['r12'],),
-            gen_by_name.x),
+#             ((torus_A2.gen_by_name['r2'],),
+#             gen_by_name.w1,
+#             (torus_A2.gen_by_name['r12'],),
+#             gen_by_name.x),
 
-            ((torus_A.gen_by_name['r23'],),
-            gen_by_name.z1,
-            (torus_A.gen_by_name['r2'],),
-            gen_by_name.x),
+#             ((torus_A.gen_by_name['r23'],),
+#             gen_by_name.z1,
+#             (torus_A.gen_by_name['r2'],),
+#             gen_by_name.x),
 
-            ((),
-            gen_by_name.x,
-            (torus_A2.gen_by_name['r3'],),
-            gen_by_name.z2),
+#             ((),
+#             gen_by_name.x,
+#             (torus_A2.gen_by_name['r3'],),
+#             gen_by_name.z2),
 
-            ((torus_A.gen_by_name['r1'],),
-            gen_by_name.x,
-            (),
-            gen_by_name.w2),
+#             ((torus_A.gen_by_name['r1'],),
+#             gen_by_name.x,
+#             (),
+#             gen_by_name.w2),
 
-            ((),
-            gen_by_name.w1,
-            (),
-            gen_by_name.w2),
+#             ((),
+#             gen_by_name.w1,
+#             (),
+#             gen_by_name.w2),
 
-            ((torus_A2.gen_by_name['r12'],),
-            gen_by_name.w1,
-            (torus_A2.gen_by_name['r12'],),
-            gen_by_name.w2),
+#             ((torus_A2.gen_by_name['r12'],),
+#             gen_by_name.w1,
+#             (torus_A2.gen_by_name['r12'],),
+#             gen_by_name.w2),
 
-            ((),
-            gen_by_name.z1,
-            (),
-            gen_by_name.z2),
+#             ((),
+#             gen_by_name.z1,
+#             (),
+#             gen_by_name.z2),
 
-            ((torus_A2.gen_by_name['r23'],),
-            gen_by_name.z1,
-            (torus_A2.gen_by_name['r23'],),
-            gen_by_name.z2),
+#             ((torus_A2.gen_by_name['r23'],),
+#             gen_by_name.z1,
+#             (torus_A2.gen_by_name['r23'],),
+#             gen_by_name.z2),
 
-            ((torus_A2.gen_by_name['r123'],),
-            gen_by_name.z1,
-            (torus_A2.gen_by_name['r2'],),
-            gen_by_name.w2),
+#             ((torus_A2.gen_by_name['r123'],),
+#             gen_by_name.z1,
+#             (torus_A2.gen_by_name['r2'],),
+#             gen_by_name.w2),
 
-            ((torus_A2.gen_by_name['r2'],),
-            gen_by_name.w1,
-            (torus_A2.gen_by_name['r123'],),
-            gen_by_name.z2),
+#             ((torus_A2.gen_by_name['r2'],),
+#             gen_by_name.w1,
+#             (torus_A2.gen_by_name['r123'],),
+#             gen_by_name.z2),
 
-            ((torus_A2.gen_by_name['r2'],),
-            gen_by_name.w1,
-            (torus_A2.gen_by_name['r3'],torus_A2.gen_by_name['r2'],torus_A2.gen_by_name['r1']),
-            gen_by_name.z2),
+#             ((torus_A2.gen_by_name['r2'],),
+#             gen_by_name.w1,
+#             (torus_A2.gen_by_name['r3'],torus_A2.gen_by_name['r2'],torus_A2.gen_by_name['r1']),
+#             gen_by_name.z2),
 
 
-        ])
+#         ])
     
-    return AA_bimodule(gen_by_name,dd_arrows,torus_A,torus_A2,name="g1_AA_id")
+#     return AA_bimodule(gen_by_name,dd_arrows,torus_A,torus_A2,name="g1_AA_id")
 # g1_AA_id=init_g1_AA_id(torus_A,torus_A)
 # g1_DD_id=init_g1_DD_id(torus_A,torus_A)
 # g1_DA_id=ID1

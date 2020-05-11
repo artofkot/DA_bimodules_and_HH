@@ -68,7 +68,10 @@ def CH(DA1):
     return ChainComplex(generators_of_chain_complex_by_name, differentials, "CH("+DA1.name+")")
 
 def dimHH(DA1):
-    return homology_dim(CH(DA1))
+    C=CH(DA1)
+    print("This is the Hochschild chain complex:")
+    C.show_short()
+    return homology_dim(C)
 
 
 

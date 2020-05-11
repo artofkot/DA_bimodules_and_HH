@@ -22,8 +22,9 @@ def da_out_mod_gen(da_arrow):
 
 # conventions: D side is left, A side is right
 class DA_bimodule(object):
-    def __init__(self,gen_by_name,da_arrows,left_algebra,right_algebra,name,to_check=True):
+    def __init__(self,gen_by_name,da_arrows,left_algebra,right_algebra,name,to_check=True,number_of_times_reduced=0):
         self.name=name
+        self.number_of_times_reduced=number_of_times_reduced
         self.gen_by_name=gen_by_name
         self.genset=list(self.gen_by_name.values())
         #differentials are represented by bunch of arrows with coefficients 1
@@ -51,9 +52,11 @@ class DA_bimodule(object):
 
 
     def show(self):
-        print ("==========")
-        print (self.name + ':\n')
-        print ('Generators with their idempotents (' + str(len(self.genset))+ ' generators)')
+        suffix=""
+        if self.number_of_times_reduced>0:
+            suffix="_reduced_"+str(self.number_of_times_reduced)+"_times"
+        print ('Bimodule name: '+ self.name+suffix)
+        print (str(len(self.genset)) + ' generators with their idempotents:')
         for gen in self.genset:
             print (str(gen.idem.left) + '___' + str(gen) + '___' + str(gen.idem.right))
 
@@ -65,9 +68,10 @@ class DA_bimodule(object):
                     print (generator1)
                     print ("↓", end=" ")
                     for ind, arrow in enumerate(arrows):
-                        print (str(da_out_alg_gen(arrow)) + '⊗' + str(da_in_alg_tuple(arrow)),)
+                        print(str(da_out_alg_gen(arrow)) + '⊗' + str(da_in_alg_tuple(arrow)),end=" ")
                         if ind+1!=len(arrows): print ('+', end=" ")
-                    print ('\n' + str(generator2) + '\n')
+                        else: print(" ")
+                    print (str(generator2) + '\n')
                 
         # for arrow in self.da_arrows:
         #     print da_arrow_to_str(arrow)
@@ -76,7 +80,7 @@ class DA_bimodule(object):
 
     def show_for_tex(self):
         print ('=============')
-        print (self.name + ':')
+        print ('Bimodule name: '+ self.name + ':')
         print ('\n\\vspace{0.2cm' +'}\n')
         print (str(len(self.genset)) + ' generators with their idempotents:')
         for gen in self.genset:
@@ -97,11 +101,14 @@ class DA_bimodule(object):
         #     print da_arrow_to_str(arrow)
 
     def show_short(self):
-        print ("==========")
-        print (self.name)
-        print (str(len(self.genset))+ ' generators with their idempotents (' + str(len(self.genset))+ ' generators)')
-        for gen in self.genset:
-            print (str(gen.idem.left) + '___' + str(gen) + '___' + str(gen.idem.right))
+        suffix=""
+        if self.number_of_times_reduced>0:
+            suffix="_reduced_"+str(self.number_of_times_reduced)+"_times"
+        print ('Bimodule name: '+ self.name+suffix)
+        print ('It has ' + str(len(self.genset))+ ' generators.')
+        # for gen in self.genset:
+        #     print (str(gen.idem.left) + '___' + str(gen) + '___' + str(gen.idem.right))
+        print ('It has ' + str(len(self.da_arrows))+ ' actions.\n')
 
 
     def check_matching_of_idempotents_in_action(self): 
@@ -217,8 +224,10 @@ def cancel_pure_differential(DAbimodule_old,pure_differential):
 
     arrows_in_new_DA.delete_arrows_with_even_coeff()
 
-    return DA_bimodule(generators_of_new_DA,arrows_in_new_DA,DAbimodule_old.left_algebra,DAbimodule_old.right_algebra,name= DAbimodule_old.name +'_red')
-
+    DADA=DA_bimodule(generators_of_new_DA,arrows_in_new_DA,DAbimodule_old.left_algebra,DAbimodule_old.right_algebra,name= DAbimodule_old.name,number_of_times_reduced= DAbimodule_old.number_of_times_reduced+1)
+    # DADA.show_short()
+    return DADA
+    
 def da_randomly_cancel_until_possible(DA1):
     there_is_diff=0
     # arrs=DA1.da_arrows
@@ -289,9 +298,9 @@ def find_bijections(genset1,possible_images_of_generators,genset2):
             all_bijections=all_bijections+bijections_with_fixed_first_pair
     return all_bijections
     
-def are_equal_smart_da(DA1,DA2):
-    print ('number of generators in bimodules we compare are {} and {}'.format(str(len(DA1.genset)),str(len(DA2.genset))))
-    print ('number of actions in bimodules we compare are {} and {}'.format(str(len(DA1.da_arrows)),str(len(DA2.da_arrows))))
+def are_equal_smart_da(DA1,DA2,verbose=False):
+    print ('Number of generators in bimodules we compare are {} and {}'.format(str(len(DA1.genset)),str(len(DA2.genset))))
+    print ('Number of actions in bimodules we compare are {} and {}'.format(str(len(DA1.da_arrows)),str(len(DA2.da_arrows))))
     
     if len(DA1.genset)!=len(DA2.genset): return False
     
@@ -312,7 +321,11 @@ def are_equal_smart_da(DA1,DA2):
         for pair in bijection:
             f[(pair[0],(),
                 1,pair[1])]+=1
-        if da_check_df_is_0(DA1,DA2,f): return True
+        if da_check_df_is_0(DA1,DA2,f): 
+            if verbose: 
+                print('The following are DA actions in the isomorphism f:')
+                f.show()
+            return True
     print ('there is no bijective isomorphism')
     return False
 

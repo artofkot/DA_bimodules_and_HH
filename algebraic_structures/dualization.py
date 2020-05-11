@@ -1,10 +1,12 @@
+import sys
 from .basics import AttrDict, Generator, Bunch_of_arrows, debug
-from right_a_module import Right_A_module
-from right_d_module import Right_D_module
-from left_d_module import Left_D_module
-from left_a_module import Left_A_module
-from dd_bimodule import DD_bimodule
-from aa_bimodule import AA_bimodule
+sys.path.append('../')
+from .right_a_module import Right_A_module
+from .right_d_module import Right_D_module
+from .left_d_module import Left_D_module
+from .left_a_module import Left_A_module
+from .dd_bimodule import DD_bimodule
+from .aa_bimodule import AA_bimodule
 
 def dualization_right_to_left_A(Right_A):
     gen_by_name=AttrDict({})

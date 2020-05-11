@@ -13,7 +13,7 @@ from .chain_complex import ChainComplex
 
 ############### here we code DA⊠DA=DA ####################
 #I assume that all 4 algebras here are the same. Actually not, I don't care.
-def da_da_box_tensor_product(DAbimodule1,DAbimodule2,to_check=True):
+def da_da_box_tensor_product(DAbimodule1,DAbimodule2,to_check=False):
     def find_sequence_for_da_da_box_tensor_product(final_list_of_sequences_of_arrows,
                                             needed_alg_tuple_to_finish_sequence,
                                             current_gen,

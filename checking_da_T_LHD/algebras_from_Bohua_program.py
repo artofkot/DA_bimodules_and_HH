@@ -5,11 +5,11 @@ sys.path.append('../')
 
 from algebraic_structures.basics import (
     AttrDict, Bunch_of_arrows, Generator)
-from algebraic_structures.algebra import A_inf_Algebra
+from algebraic_structures.algebra import dg_algebra
 
 # for split pointed matched circle,
 # which we call pmc1
-from algebraic_structures.algebra import g2_A
+from algebraic_structures.specific_algebras_modules_bimodules import g2_A
 
 
 def init_A_pmc1_str3():
@@ -4162,7 +4162,7 @@ def init_A_pmc1_str3():
         (gen_by_name["|(1->3),(4->7),(5->6)|"],gen_by_name["|(1->3),(4->6),(5->7)|"]),
         ])
 
-    return A_inf_Algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='A_pmc1_str3', to_check=False)
+    return dg_algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='A_pmc1_str3', to_check=False)
 
 def init_B2():
     gen_by_name=AttrDict({
@@ -4328,7 +4328,7 @@ def init_B2():
 
     algebra_diff_arrows=Bunch_of_arrows([
         ])
-    return A_inf_Algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='B2', to_check=False)
+    return dg_algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='B2', to_check=False)
 
 def init_B3():
     gen_by_name=AttrDict({
@@ -4495,7 +4495,7 @@ def init_B3():
     algebra_diff_arrows=Bunch_of_arrows([
         ])
 
-    return A_inf_Algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='B3', to_check=False)
+    return dg_algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='B3', to_check=False)
 
 def init_B4():
     gen_by_name=AttrDict({
@@ -4662,7 +4662,7 @@ def init_B4():
     algebra_diff_arrows=Bunch_of_arrows([
         ])
 
-    return A_inf_Algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='B4', to_check=False)
+    return dg_algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='B4', to_check=False)
 
 def init_B5():
     gen_by_name=AttrDict({
@@ -4830,7 +4830,7 @@ def init_B5():
         ])
 
 
-    return A_inf_Algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='B5', to_check=False)
+    return dg_algebra(gen_by_name=gen_by_name,idem_by_name=idem_by_name,multiplication_table=multiplication_table,algebra_diff_arrows=algebra_diff_arrows,name='B5', to_check=False)
 
 # for pmc1 = split pmc
 B1=g2_A
