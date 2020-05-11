@@ -8,7 +8,7 @@ This software accompanies the paper ["Comparing homological invariants for mappi
 2. Open terminal, and change your location to the folder downloaded on the previous step.
 
 3. Run the program by typing the following command:
-```python3 run.py showcase1```<br />
+```python3 run.py showcase0```<br />
 If you want to see another showcase (these are particular showcases referenced in the [paper](https://arxiv.org/abs/1702.04071)), simply run
 ```python3 run.py showcaseN```
 where N is the number of the showcase.

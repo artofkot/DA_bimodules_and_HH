@@ -37,6 +37,18 @@ E_inv=g2_M_LHD
 
 ########## SHOWCASES ##########
 
+def showcase0():
+    print("Here we initialize the main ten bimodules of the paper:")
+    for Y in [A_,B_,C_,D_,E_,A_inv,B_inv,C_inv,D_inv,E_inv]:
+        Y.show_short()
+    print('\nType "yes" and press enter if you want more details about the bimodules; type "no" otherwise.')
+    input1= input()
+    if input1=='yes':
+        for Y in [A_,B_,C_,D_,E_,A_inv,B_inv,C_inv,D_inv,E_inv]:
+            Y.show() 
+    print('To perform various sanity checks (by verifying the MCG relations) run the command "python3 run.py showcase3".')
+    
+
 def showcase1():
     print("\n5_1=Torus(5,2) knot has genus 2, and is fibered with monodromy τ_A᛫τ_B᛫τ_C᛫τ_D (see knotinfo.math.indiana.edu). Its knot Floer homology in the second to lowest Alexander grading has dimension 1 (see http://katlas.math.toronto.edu/wiki/Heegaard_Floer_Knot_Homology). Lets see this using Hochschild homology computation:")
     print("Computing HH(N(τ_A᛫τ_B᛫τ_C᛫τ_D))...")
@@ -83,6 +95,25 @@ def showcase2():
         print("Time it took to compute: "+str(elapsed)+"seconds")
 
 def showcase3():
+    X=da_da_box_tensor_many_efficient_cancelations(A_,A_inv)
+    Z=da_da_box_tensor_many_efficient_cancelations(g2_ID)
+    print("We first show that the tensor product of N(τ_A) with N(τ_A^{-1}) is isomorphic to the identity bimodule.\n")
+    print("The following bimodule is N(τ_A᛫τ_A^{-1}), maximally canceled:")  
+    X.show_short()
+    print("The following bimodule is N(id):")  
+    Z.show_short()
+    are_equal_smart_da(X,g2_ID)
+    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no" to proceed to commuting relation.')
+    input1= input()
+    if input1=='yes':
+        print("The following bimodule is N(τ_A᛫τ_C):")  
+        X.show()
+        print("The following bimodule is N(τ_C᛫τ_A):")  
+        Z.show()
+        are_equal_smart_da(X,Z,verbose=True)
+        print("End of the first sanity check. Now off to the commuting relation:\n\n")  
+
+
     X=da_da_box_tensor_many_efficient_cancelations(A_,C_)
     Z=da_da_box_tensor_many_efficient_cancelations(C_,A_)
     print("Below is an example of bimodules satisfying commuting relation from MCG presentation (2.1) in the paper.\n")
@@ -91,7 +122,7 @@ def showcase3():
     print("The following bimodule is N(τ_C᛫τ_A):")  
     Z.show_short()
     are_equal_smart_da(X,Z)
-    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no" and press enter otherwise.')
+    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no"  to proceed to braid relation.')
     input1= input()
     if input1=='yes':
         print("The following bimodule is N(τ_A᛫τ_C):")  
@@ -99,7 +130,7 @@ def showcase3():
         print("The following bimodule is N(τ_C᛫τ_A):")  
         Z.show()
         are_equal_smart_da(X,Z,verbose=True)
-    print("End of commuting relation showcase. Now off to the braid relation:\n\n")  
+        print("End of commuting relation showcase. Now off to the braid relation:\n\n")  
 
     X=da_da_box_tensor_many_efficient_cancelations(A_,B_,A_)
     Z=da_da_box_tensor_many_efficient_cancelations(B_,A_,B_)
@@ -109,7 +140,7 @@ def showcase3():
     print("The following bimodule is N(τ_B᛫τ_A᛫τ_B):")  
     Z.show_short()
     are_equal_smart_da(X,Z)
-    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no" and press enter otherwise.')
+    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no"  to proceed to the last relation.')
     input1= input()
     if input1=='yes':
         print("The following bimodule is N(τ_A᛫τ_B᛫τ_A):")  
@@ -117,7 +148,7 @@ def showcase3():
         print("The following bimodule is N(τ_B᛫τ_A᛫τ_B):")  
         Z.show()
         are_equal_smart_da(X,Z,verbose=True)
-    print("End of braid relation showcase. Now off to the last relation: (wait about 10 second)\n\n")  
+        print("End of braid relation showcase. Now off to the last relation: (wait about 10 second)\n\n")  
 
     X=da_da_box_tensor_many_efficient_cancelations(A_,B_,C_,D_,E_,E_,D_,C_,B_,A_)
     Z_=da_da_box_tensor_many_efficient_cancelations(E_,D_,C_,B_)

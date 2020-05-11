@@ -33,7 +33,7 @@ class ChainComplex(object):
     def show(self):
         suffix=""
         if self.number_of_times_reduced>0:
-            suffix="reduced_"+str(self.number_of_times_reduced)+"_times"
+            suffix="_canceled_"+str(self.number_of_times_reduced)+"_times"
         print ('Chain complex name: '+self.name+suffix)
         print ("{} generators:".format(len(self.genset)))
         for gen in self.genset:
@@ -44,7 +44,7 @@ class ChainComplex(object):
     def show_short(self):
         suffix=""
         if self.number_of_times_reduced>0:
-            suffix="_reduced_"+str(self.number_of_times_reduced)+"_times"
+            suffix="_canceled_"+str(self.number_of_times_reduced)+"_times"
         print ('Chain complex name: '+ self.name+suffix)
         print ('It has ' + str(len(self.genset))+ ' generators.')
         print ('It has ' + str(len(self.arrows))+ ' differentials.\n')

@@ -54,7 +54,7 @@ class DA_bimodule(object):
     def show(self):
         suffix=""
         if self.number_of_times_reduced>0:
-            suffix="_reduced_"+str(self.number_of_times_reduced)+"_times"
+            suffix="_canceled_"+str(self.number_of_times_reduced)+"_times"
         print ('Bimodule name: '+ self.name+suffix)
         print (str(len(self.genset)) + ' generators with their idempotents:')
         for gen in self.genset:
@@ -103,7 +103,7 @@ class DA_bimodule(object):
     def show_short(self):
         suffix=""
         if self.number_of_times_reduced>0:
-            suffix="_reduced_"+str(self.number_of_times_reduced)+"_times"
+            suffix="_canceled_"+str(self.number_of_times_reduced)+"_times"
         print ('Bimodule name: '+ self.name+suffix)
         print ('It has ' + str(len(self.genset))+ ' generators.')
         # for gen in self.genset:
@@ -227,7 +227,7 @@ def cancel_pure_differential(DAbimodule_old,pure_differential):
     DADA=DA_bimodule(generators_of_new_DA,arrows_in_new_DA,DAbimodule_old.left_algebra,DAbimodule_old.right_algebra,name= DAbimodule_old.name,number_of_times_reduced= DAbimodule_old.number_of_times_reduced+1)
     # DADA.show_short()
     return DADA
-    
+
 def da_randomly_cancel_until_possible(DA1):
     there_is_diff=0
     # arrs=DA1.da_arrows
