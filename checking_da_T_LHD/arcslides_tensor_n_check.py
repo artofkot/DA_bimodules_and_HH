@@ -1159,31 +1159,31 @@ DA6=init_DA6(B6,B1)
 ### FINAL COMPUTATION - WORKS!
 WOW_DA=da_da_box_tensor_many_efficient_cancelations(DA1,DA2,DA3,DA4,DA5,DA6)
 g2_T_LHD_red=da_randomly_cancel_until_possible(g2_T_LHD)
-
-print("Below we compute the tensor product of 6 arc-slide bimodules, and verify that it is homotopy equivalent to N(τ_C^{-1}).\n")
-print("We first describe all the 6 arc-slide bimodules:")
-for X in [DA1,DA2,DA3,DA4,DA5,DA6]:
-    X.show_short()
-print("Next we describe the tensor product of 6 bimodules")  
-WOW_DA.show_short()
-print("Next we describe the bimodule N(τ_C^{-1})")  
-g2_T_LHD.show_short()
-print("Next we describe the bimodule N(τ_C^{-1}), but simplified with the one possible cancellation")
-g2_T_LHD_red.show_short()
-print("Next we check if the two bimodules in question are isomorphic:")
-are_equal_smart_da(WOW_DA,g2_T_LHD_red)
-print('\nType "yes" and press enter if you want more details about the bimodules and the isomorphism between them; type "no" and press enter otherwise.')
-input1= input()
-if input1=='yes':
-    print("We first describe all the 6 arc-slide bimodules.")
+def exec():
+    print("Below we compute the tensor product of 6 arc-slide bimodules, and verify that it is homotopy equivalent to N(τ_C^{-1}).\n")
+    print("We first describe all the 6 arc-slide bimodules:")
     for X in [DA1,DA2,DA3,DA4,DA5,DA6]:
-        X.show()
-    print("Next we describe the tensor product of 6 bimodules (already maximally canceled)")  
-    WOW_DA.show()
-    print("Next we describe the bimodule N(τ_C^{-1}), simplified with the one possible cancellation")
-    g2_T_LHD_red.show()
+        X.show_short()
+    print("Next we describe the tensor product of 6 bimodules")  
+    WOW_DA.show_short()
+    print("Next we describe the bimodule N(τ_C^{-1})")  
+    g2_T_LHD.show_short()
+    print("Next we describe the bimodule N(τ_C^{-1}), but simplified with the one possible cancellation")
+    g2_T_LHD_red.show_short()
     print("Next we check if the two bimodules in question are isomorphic:")
-    are_equal_smart_da(WOW_DA,g2_T_LHD_red,verbose=True)
+    are_equal_smart_da(WOW_DA,g2_T_LHD_red)
+    print('\nType "yes" and press enter if you want more details about the bimodules and the isomorphism between them; type "no" and press enter otherwise.')
+    input1= input()
+    if input1=='yes':
+        print("We first describe all the 6 arc-slide bimodules.")
+        for X in [DA1,DA2,DA3,DA4,DA5,DA6]:
+            X.show()
+        print("Next we describe the tensor product of 6 bimodules (already maximally canceled)")  
+        WOW_DA.show()
+        print("Next we describe the bimodule N(τ_C^{-1}), simplified with the one possible cancellation")
+        g2_T_LHD_red.show()
+        print("Next we check if the two bimodules in question are isomorphic:")
+        are_equal_smart_da(WOW_DA,g2_T_LHD_red,verbose=True)
     
 
 

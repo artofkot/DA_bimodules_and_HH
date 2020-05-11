@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*- 
 import sys
 
-from checking_da_T_LHD import arcslides_tensor_n_check
+from checking_da_T_LHD.arcslides_tensor_n_check import exec
 from algebraic_structures.specific_algebras_modules_bimodules import torus_A
 from algebraic_structures.basics import  Bunch_of_arrows,in_red
 from algebraic_structures.da_bimodule import  (
@@ -298,7 +298,7 @@ def showcase9():
         print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
     
 def showcase10():
-    arcslides_tensor_n_check
+    exec()
 
 ########## COMPUTATIONS ##########
 
