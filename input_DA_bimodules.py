@@ -655,7 +655,7 @@ def init_g2_ID(g2_A):
         arrows[(gen_in,(algebra_element,),
                 algebra_element,gen_out)]+=1
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_ID")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="[I]")
 def init_g2_ID_bounded(g2_A):
     gen_by_name=AttrDict({
                 "x0": Generator("x0"),
@@ -853,7 +853,7 @@ def init_g2_ID_bounded(g2_A):
         ])
     
 
-    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="g2_ID_bounded")
+    return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="[I]^b")
 
 def init_g2_M_RHD(g2_A):
     gen_by_name=AttrDict({

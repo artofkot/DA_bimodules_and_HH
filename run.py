@@ -328,6 +328,35 @@ def showcase9():
 def showcase10():
     exec()
 
+def showcase11():
+    print("Here we perform a computation from Section~2.3 from the paper:")
+    X=g2_ID
+    Z=g2_ID_bounded
+    # da_da_box_tensor_many_efficient_cancelations
+    print("The following bimodule is the identity bimodule:")  
+    X.show_short()
+    print("The following is the proposed bounded model for the identity bimodule:")  
+    Z.show_short()
+    print("The following is the bounded model with 4 differentials canceled:")  
+    Y=da_randomly_cancel_until_possible(Z)
+    Y.show_short()
+    are_equal_smart_da(X,g2_ID)
+    print('\nType "yes" and press enter if you want more details about the bimodules and the isomorphism between them; type "no" otherwise.')
+    input1= input()
+    if input1=='yes':
+        print("Here we perform a computation from Section~2.3 from the paper:")
+        X=g2_ID
+        Z=g2_ID_bounded
+        # da_da_box_tensor_many_efficient_cancelations
+        print("The following bimodule is the identity bimodule:")  
+        X.show()
+        print("The following is the proposed bounded model for the identity bimodule:")  
+        Z.show()
+        print("The following is the bounded model with 4 differentials canceled:")  
+        Y.show()
+        are_equal_smart_da(X,g2_ID,verbose=True)
+    
+        
 ########## COMPUTATIONS ##########
 
 # F2_THETA=composition(F2,THETA,A)
