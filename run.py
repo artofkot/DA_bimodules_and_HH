@@ -137,7 +137,7 @@ def showcase3():
     print("The following bimodule is N(τ_B᛫τ_A᛫τ_B):")  
     Z.show_short()
     are_equal_smart_da(X,Z)
-    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no"  to proceed to the last relation. (wait about 10 second)\n\n')
+    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no"  to proceed to the last relation (which will take about 10 second). \n\n')
     input1= input()
     if input1=='yes':
         print("The following bimodule is N(τ_A᛫τ_B᛫τ_A):")  
