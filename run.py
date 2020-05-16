@@ -103,9 +103,9 @@ def showcase3():
     print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no" to proceed to commuting relation.')
     input1= input()
     if input1=='yes':
-        print("The following bimodule is N(τ_A᛫τ_C):")  
+        print("The following bimodule is N(τ_A᛫τ_A^{-1}):")  
         X.show()
-        print("The following bimodule is N(τ_C᛫τ_A):")  
+        print("The following bimodule is N(id):")  
         Z.show()
         are_equal_smart_da(X,Z,verbose=True)
         print("End of the first sanity check. Now off to the commuting relation:\n\n")  
@@ -137,7 +137,7 @@ def showcase3():
     print("The following bimodule is N(τ_B᛫τ_A᛫τ_B):")  
     Z.show_short()
     are_equal_smart_da(X,Z)
-    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no"  to proceed to the last relation (which will take about 10 second). \n\n')
+    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no"  to proceed to the last relation (which will take about 10 second).')
     input1= input()
     if input1=='yes':
         print("The following bimodule is N(τ_A᛫τ_B᛫τ_A):")  
@@ -145,7 +145,7 @@ def showcase3():
         print("The following bimodule is N(τ_B᛫τ_A᛫τ_B):")  
         Z.show()
         are_equal_smart_da(X,Z,verbose=True)
-        print("End of braid relation showcase. Now off to the last relation: (wait about 10 second)\n\n")  
+        print("End of braid relation showcase. Now off to the last relation: (wait about 10 second)")  
 
     X=da_da_box_tensor_many_efficient_cancelations(A_,B_,C_,D_,E_,E_,D_,C_,B_,A_)
     Z_=da_da_box_tensor_many_efficient_cancelations(E_,D_,C_,B_)
@@ -213,7 +213,7 @@ def showcase5():
         homology_vector_space(C).show_gradings()
         print("==============\n")
     
-    print('\nWe now provide more details, on demand:\nType "A" and press enter if you want more details about the bimodule τ_A and its Hochschild homology; \nType "B" and press enter if you want more details about the bimodule τ_B and its Hochschild homology; \nType "C" and press enter if you want more details about the bimodule τ_C and its Hochschild homology; \nType "D" and press enter if you want more details about the bimodule τ_D and its Hochschild homology; \nType "E" and press enter if you want more details about the bimodule τ_E and its Hochschild homology; \nType "no" and press enter otherwise.')
+    print('\nWe now provide more details, on demand:\nType "A" and press enter if you want more details about the bimodule τ_A^{-1} and its Hochschild homology; \nType "B" and press enter if you want more details about the bimodule τ_B^{-1} and its Hochschild homology; \nType "C" and press enter if you want more details about the bimodule τ_C^{-1} and its Hochschild homology; \nType "D" and press enter if you want more details about the bimodule τ_D^{-1} and its Hochschild homology; \nType "E" and press enter if you want more details about the bimodule τ_E^{-1} and its Hochschild homology; \nType "no" and press enter otherwise.')
     input1= input()
     if input1 in ["A","B","C","D","E"]:
         print("This is the bimodule:")
@@ -245,7 +245,7 @@ def showcase6():
         print("Gradings:")
         homology_vector_space(C).show_gradings()
         print("==============\n")
-    print('\nWe now provide more details, on demand:\nType "A" and press enter if you want more details about the bimodule τ_A^{-1} and its Hochschild homology; \nType "B" and press enter if you want more details about the bimodule τ_B^{-1} and its Hochschild homology; \nType "C" and press enter if you want more details about the bimodule τ_C^{-1} and its Hochschild homology; \nType "D" and press enter if you want more details about the bimodule τ_D^{-1} and its Hochschild homology; \nType "E" and press enter if you want more details about the bimodule τ_E^{-1} and its Hochschild homology; \nType "no" and press enter otherwise.')
+    print('\nWe now provide more details, on demand:\nType "A" and press enter if you want more details about the bimodule τ_A and its Hochschild homology; \nType "B" and press enter if you want more details about the bimodule τ_B and its Hochschild homology; \nType "C" and press enter if you want more details about the bimodule τ_C and its Hochschild homology; \nType "D" and press enter if you want more details about the bimodule τ_D and its Hochschild homology; \nType "E" and press enter if you want more details about the bimodule τ_E and its Hochschild homology; \nType "no" and press enter otherwise.')
     input1= input()
     if input1 in ["A","B","C","D","E"]:
         print("This is the bimodule:")
@@ -264,7 +264,7 @@ def showcase6():
 
 
 def showcase7():
-    print("Here we perform the last two computations from the proof of Theorem~1.2: (it may take about 4 minutes, after that we will output the results)\n")
+    print("Here we perform the last two computations from the proof of Theorem~1.2: (it may take about 4 minutes, after that we will output the results)")
     X=da_da_box_tensor_many_efficient_cancelations(A_,B_,C_,D_)
     X=da_da_box_tensor_many_efficient_cancelations(X,X,X,X,X,X,X,X,X,X)
     Z=da_da_box_tensor_many_efficient_cancelations(A_,B_)
