@@ -58,7 +58,7 @@ class DA_bimodule(object):
         print ('Bimodule name: '+ self.name+suffix)
         print (str(len(self.genset)) + ' generators with their idempotents:')
         for gen in self.genset:
-            print (str(gen.idem.left) + '___' + str(gen) + '___' + str(gen.idem.right))
+            print (str(gen.idem.left) + '___' + str(gen) + '___' + str(gen.idem.right) + " in grading " + str(gen.Z2grading))
 
         print ('\n' + str(len(self.da_arrows))+ ' actions')
         for generator1 in self.genset:

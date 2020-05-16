@@ -11,7 +11,7 @@ from algebraic_structures.tensoring import (
     da_da_box_tensor_many_efficient_cancelations, 
     da_da_box_tensor_many_no_cancelations)
 from algebraic_structures.hochschild_homology import is_bounded, CH, dimHH
-from algebraic_structures.chain_complex import homology_dim
+from algebraic_structures.chain_complex import homology_dim, homology_vector_space
 # from algebraic_structures.visual import draw_DA_bimodule, draw_chain_complex
 
 
@@ -137,7 +137,7 @@ def showcase3():
     print("The following bimodule is N(τ_B᛫τ_A᛫τ_B):")  
     Z.show_short()
     are_equal_smart_da(X,Z)
-    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no"  to proceed to the last relation.')
+    print('\nType "yes" and press enter if you want more details about the bimodules and isomorphisms between them; type "no"  to proceed to the last relation. (wait about 10 second)\n\n')
     input1= input()
     if input1=='yes':
         print("The following bimodule is N(τ_A᛫τ_B᛫τ_A):")  
@@ -177,6 +177,9 @@ def showcase4():
     print("This is the Hochschild chain complex:")
     C.show_short()
     print("dim(HH(N(id))=" + str(homology_dim(C)))
+    print("Gradings:")
+    homology_vector_space(C).show_gradings()
+    print("==============\n")
     print('\nType "yes" and press enter if you want more details about the bimodule and its Hochschild homology; type "no" and press enter otherwise.')
     input1= input()
     if input1=='yes':
@@ -190,35 +193,11 @@ def showcase4():
         print("This is the Hochschild chain complex:")
         C.show()
         print("\ndim(HH(N(id))=" + str(homology_dim(C)))
+        print("Gradings:")
+        homology_vector_space(C).show_gradings()
+        print("==============\n")
 
 def showcase5():
-    print("Here we perform Computation~4.3 from the paper. First we compute Hochschild homologies for all the five bimodules in question:\n")
-    for Y in [A_,B_,C_,D_,E_]:
-        print("This is the bimodule:")
-        Y.show_short()
-        print("This is the bounded model of the same bimodule:")
-        Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,Y,g2_ID_bounded)
-        Y.show_short()
-        C=CH(Y)
-        print("This is the Hochschild chain complex:")
-        C.show_short()
-        print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
-    
-    print('\nWe now provide more details, on demand:\nType "A" and press enter if you want more details about the bimodule τ_A and its Hochschild homology; \nType "B" and press enter if you want more details about the bimodule τ_B and its Hochschild homology; \nType "C" and press enter if you want more details about the bimodule τ_C and its Hochschild homology; \nType "D" and press enter if you want more details about the bimodule τ_D and its Hochschild homology; \nType "E" and press enter if you want more details about the bimodule τ_E and its Hochschild homology; \nType "no" and press enter otherwise.')
-    input1= input()
-    if input1 in ["A","B","C","D","E"]:
-        print("This is the bimodule:")
-        Y=da_da_box_tensor_many_no_cancelations(eval(input1+'_'))
-        Y.show()
-        print("This is the bounded model of the same bimodule:")
-        Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,Y,g2_ID_bounded)
-        Y.show()
-        C=CH(Y)
-        print("This is the Hochschild chain complex:")
-        C.show()
-        print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
-    
-def showcase6():
     print("Here we perform Computation~4.3 from the paper. First we compute Hochschild homologies for all the five bimodules in question:\n")
     for Y in [A_inv,B_inv,C_inv,D_inv,E_inv]:
         print("This is the bimodule:")
@@ -229,9 +208,12 @@ def showcase6():
         C=CH(Y)
         print("This is the Hochschild chain complex:")
         C.show_short()
-        print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
+        print("Hochschild homology has dimension " + str(homology_dim(C)))
+        print("Gradings:")
+        homology_vector_space(C).show_gradings()
+        print("==============\n")
     
-    print('\nWe now provide more details, on demand:\nType "A" and press enter if you want more details about the bimodule τ_A^{-1} and its Hochschild homology; \nType "B" and press enter if you want more details about the bimodule τ_B^{-1} and its Hochschild homology; \nType "C" and press enter if you want more details about the bimodule τ_C^{-1} and its Hochschild homology; \nType "D" and press enter if you want more details about the bimodule τ_D^{-1} and its Hochschild homology; \nType "E" and press enter if you want more details about the bimodule τ_E^{-1} and its Hochschild homology; \nType "no" and press enter otherwise.')
+    print('\nWe now provide more details, on demand:\nType "A" and press enter if you want more details about the bimodule τ_A and its Hochschild homology; \nType "B" and press enter if you want more details about the bimodule τ_B and its Hochschild homology; \nType "C" and press enter if you want more details about the bimodule τ_C and its Hochschild homology; \nType "D" and press enter if you want more details about the bimodule τ_D and its Hochschild homology; \nType "E" and press enter if you want more details about the bimodule τ_E and its Hochschild homology; \nType "no" and press enter otherwise.')
     input1= input()
     if input1 in ["A","B","C","D","E"]:
         print("This is the bimodule:")
@@ -243,8 +225,42 @@ def showcase6():
         C=CH(Y)
         print("This is the Hochschild chain complex:")
         C.show()
-        print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
-    
+        print("Hochschild homology has dimension " + str(homology_dim(C)))
+        print("Gradings:")
+        homology_vector_space(C).show_gradings()
+        print("==============\n")
+
+def showcase6():
+    print("Here we perform Computation~4.3 from the paper. First we compute Hochschild homologies for all the five bimodules in question:\n")
+    for Y in [A_,B_,C_,D_,E_]:
+        print("This is the bimodule:")
+        Y.show_short()
+        print("This is the bounded model of the same bimodule:")
+        Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,Y,g2_ID_bounded)
+        Y.show_short()
+        C=CH(Y)
+        print("This is the Hochschild chain complex:")
+        C.show_short()
+        print("Hochschild homology has dimension " + str(homology_dim(C)))
+        print("Gradings:")
+        homology_vector_space(C).show_gradings()
+        print("==============\n")
+    print('\nWe now provide more details, on demand:\nType "A" and press enter if you want more details about the bimodule τ_A^{-1} and its Hochschild homology; \nType "B" and press enter if you want more details about the bimodule τ_B^{-1} and its Hochschild homology; \nType "C" and press enter if you want more details about the bimodule τ_C^{-1} and its Hochschild homology; \nType "D" and press enter if you want more details about the bimodule τ_D^{-1} and its Hochschild homology; \nType "E" and press enter if you want more details about the bimodule τ_E^{-1} and its Hochschild homology; \nType "no" and press enter otherwise.')
+    input1= input()
+    if input1 in ["A","B","C","D","E"]:
+        print("This is the bimodule:")
+        Y=da_da_box_tensor_many_no_cancelations(eval(input1+'_'))
+        Y.show()
+        print("This is the bounded model of the same bimodule:")
+        Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,Y,g2_ID_bounded)
+        Y.show()
+        C=CH(Y)
+        print("This is the Hochschild chain complex:")
+        C.show()
+        print("Hochschild homology has dimension " + str(homology_dim(C)))
+        print("Gradings:")
+        homology_vector_space(C).show_gradings()
+        print("==============\n")
 
 
 def showcase7():
@@ -262,7 +278,10 @@ def showcase7():
         C=CH(Y)
         print("This is the Hochschild chain complex:")
         C.show_short()
-        print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
+        print("Hochschild homology has dimension " + str(homology_dim(C)))
+        print("Gradings:")
+        homology_vector_space(C).show_gradings()
+        print("==============\n")
     print('\nWe now provide more details, on demand:\nType "yes" and press enter if you want more details; type "no" and press enter otherwise')
     input1= input()
     if input1=="yes":
@@ -273,11 +292,13 @@ def showcase7():
             C=CH(Y)
             print("This is the Hochschild chain complex:")
             C.show()
-            print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
-    
+            print("Hochschild homology has dimension " + str(homology_dim(C)))
+            print("Gradings:")
+            homology_vector_space(C).show_gradings()
+            print("==============\n")
 def showcase8():
     print("Here we perform Computation~4.5 from the paper:")
-    Y=da_da_box_tensor_many_efficient_cancelations(A_,B_,C_,D_)
+    Y=da_da_box_tensor_many_efficient_cancelations(D_inv,C_inv,B_inv,A_inv)
     print("This is the bimodule:")
     Y.show_short()
     print("This is the bounded model of the same bimodule:")
@@ -286,23 +307,28 @@ def showcase8():
     C=CH(Y)
     print("This is the Hochschild chain complex:")
     C.show_short()
-    print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
-    
-    print('\nWe now provide more details, on demand:\nType "yes" and press enter if you want more details; type "no" and press enter otherwise')
-    input1= input()
-    if input1=="yes":
-        Y=da_da_box_tensor_many_efficient_cancelations(A_,B_,C_,D_)
-        print("This is the bimodule:")
-        Y.show()
-        Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,Y,g2_ID_bounded)
-        C=CH(Y)
-        print("This is the Hochschild chain complex:")
-        C.show()
-        print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
+    print("Hochschild homology has dimension " + str(homology_dim(C)))
+    print("Gradings:")
+    homology_vector_space(C).show_gradings()
+    print("==============\n")
 
+    print('\nWe now provide more details, on demand:\nType "yes" and press enter if you want more details; type "no" and press enter otherwise')
+    input1= input()
+    if input1=="yes":
+        Y=da_da_box_tensor_many_efficient_cancelations(D_inv,C_inv,B_inv,A_inv)
+        print("This is the bimodule:")
+        Y.show()
+        Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,Y,g2_ID_bounded)
+        C=CH(Y)
+        print("This is the Hochschild chain complex:")
+        C.show()
+        print("Hochschild homology has dimension " + str(homology_dim(C)))
+        print("Gradings:")
+        homology_vector_space(C).show_gradings()
+        print("==============\n")
 def showcase9():
-    print("Here we perform Computation~4.6 from the paper:")
-    Y=da_da_box_tensor_many_efficient_cancelations(A_,A_,A_,A_,A_,B_,C_,D_,E_,E_,E_,E_,E_)
+    print("Here we perform Computation~4.7 from the paper:")
+    Y=da_da_box_tensor_many_efficient_cancelations(E_inv,E_inv,E_inv,E_inv,E_inv,D_inv,C_inv,B_inv,A_inv,A_inv,A_inv,A_inv,A_inv)
     print("This is the bimodule:")
     Y.show_short()
     print("This is the bounded model of the same bimodule:")
@@ -311,20 +337,25 @@ def showcase9():
     C=CH(Y)
     print("This is the Hochschild chain complex:")
     C.show_short()
-    print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
-    
+    print("Hochschild homology has dimension " + str(homology_dim(C)))
+    print("Gradings:")
+    homology_vector_space(C).show_gradings()
+    print("==============\n")
+
     print('\nWe now provide more details, on demand:\nType "yes" and press enter if you want more details; type "no" and press enter otherwise')
     input1= input()
     if input1=="yes":
-        Y=da_da_box_tensor_many_efficient_cancelations(A_,A_,A_,A_,A_,B_,C_,D_,E_,E_,E_,E_,E_)
+        Y=da_da_box_tensor_many_efficient_cancelations(E_inv,E_inv,E_inv,E_inv,E_inv,D_inv,C_inv,B_inv,A_inv,A_inv,A_inv,A_inv,A_inv)
         print("This is the bimodule:")
         Y.show()
         Y=da_da_box_tensor_many_no_cancelations(g2_ID_bounded,Y,g2_ID_bounded)
         C=CH(Y)
         print("This is the Hochschild chain complex:")
         C.show()
-        print("Hochschild homology has dimension " + str(homology_dim(C))+'\n\n===========')
-    
+        print("Hochschild homology has dimension " + str(homology_dim(C)))
+        print("Gradings:")
+        homology_vector_space(C).show_gradings()
+        print("==============\n")
 def showcase10():
     exec()
 

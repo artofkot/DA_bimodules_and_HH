@@ -37,7 +37,7 @@ class ChainComplex(object):
         print ('Chain complex name: '+self.name+suffix)
         print ("{} generators:".format(len(self.genset)))
         for gen in self.genset:
-            print (str(gen))
+            print (str(gen) + " in grading " + str(gen.Z2grading))
         print ("\n{} differentials:".format(len(self.arrows)))
         self.arrows.show()
 
@@ -48,7 +48,15 @@ class ChainComplex(object):
         print ('Chain complex name: '+ self.name+suffix)
         print ('It has ' + str(len(self.genset))+ ' generators.')
         print ('It has ' + str(len(self.arrows))+ ' differentials.\n')
-
+    
+    def show_gradings(self):
+        a=0
+        b=0
+        for gen in self.genset:
+            if gen.Z2grading==0: a+=1
+            else: b+=1
+        print (str(a)+ ' generators in grading 0')
+        print (str(b)+ ' generators in grading 1')
 
 def cancel_differential(C,d):
     z1=d[0]
@@ -71,6 +79,22 @@ def cancel_differential(C,d):
     new_arrows.delete_arrows_with_even_coeff()
     C2=ChainComplex(new_generators_by_name,new_arrows, C.name, number_of_times_reduced=C.number_of_times_reduced+1)
     return C2
+
+def homology_vector_space(C):
+    C.arrows.delete_arrows_with_even_coeff()
+    there_is_diff=0
+    for arrow in C.arrows:
+        if arrow[0]==arrow[1]: continue
+        there_is_diff=1
+        canceled_C=cancel_differential(C,arrow)
+        return (homology_vector_space(canceled_C))
+
+    if there_is_diff==0:
+        # print ("\nGenerators of H(" + C.name + ") are:")
+        # print (C.genset)
+        # print ('\nHomology has dimension ' + str(len(C.genset)))
+        C.name='Homology vector space after all cancellations'
+        return C
 
 def homology_dim(C):
     C.arrows.delete_arrows_with_even_coeff()

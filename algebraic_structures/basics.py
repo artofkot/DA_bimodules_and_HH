@@ -43,7 +43,8 @@ class Bunch_of_arrows(Counter):
             del self[ar]
 
 class Generator(object):
-    def __init__(self, name,tex_name="WRONG:TEX NAME NOT SPECIFIED",reverse_tex_name="WRONG:REVERSE TEX NAME NOT SPECIFIED",aux_info=None):
+    def __init__(self, name,tex_name="WRONG:TEX NAME NOT SPECIFIED",reverse_tex_name="WRONG:REVERSE TEX NAME NOT SPECIFIED",aux_info=None,Z2grading=0):
+        self.Z2grading = Z2grading
         self.name = name
         self.tex_name=tex_name
         self.factorizations=[]

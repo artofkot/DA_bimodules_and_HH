@@ -630,10 +630,10 @@ def g2_algebra_involution(a,g2_A):
 
 def init_g2_ID(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i0,g2_A.idem_by_name.i0)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i1,g2_A.idem_by_name.i1)
@@ -658,18 +658,18 @@ def init_g2_ID(g2_A):
     return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="[I]")
 def init_g2_ID_bounded(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "z1": Generator("z1"),
-                "z2": Generator("z2"),
-                "w1": Generator("w1"),
-                "w2": Generator("w2"),
-                "t1": Generator("t1"),
-                "t2": Generator("t2"),
-                "c1": Generator("c1"),
-                "c2": Generator("c2")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "z1": Generator("z1",Z2grading=1),
+                "z2": Generator("z2",Z2grading=0),
+                "w1": Generator("w1",Z2grading=0),
+                "w2": Generator("w2",Z2grading=1),
+                "t1": Generator("t1",Z2grading=1),
+                "t2": Generator("t2",Z2grading=0),
+                "c1": Generator("c1",Z2grading=0),
+                "c2": Generator("c2",Z2grading=1)
 
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i0,g2_A.idem_by_name.i0)
@@ -857,11 +857,11 @@ def init_g2_ID_bounded(g2_A):
 
 def init_g2_M_RHD(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "r":Generator("r")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "r":Generator("r",Z2grading=0)
                 })
     
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i0,g2_A.idem_by_name.i0)
@@ -984,11 +984,11 @@ def init_g2_M_RHD(g2_A):
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_K_LHD(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "r":Generator("r")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "r":Generator("r",Z2grading=0)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i3,g2_A.idem_by_name.i3)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i2,g2_A.idem_by_name.i2)
@@ -1110,11 +1110,11 @@ def init_g2_K_LHD(g2_A):
 
 def init_g2_M_LHD(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "r":Generator("r")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "r":Generator("r",Z2grading=1)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i0,g2_A.idem_by_name.i0)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i1,g2_A.idem_by_name.i1)
@@ -1216,11 +1216,11 @@ def init_g2_M_LHD(g2_A):
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_K_RHD(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "r":Generator("r")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "r":Generator("r",Z2grading=1)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i3,g2_A.idem_by_name.i3)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i2,g2_A.idem_by_name.i2)
@@ -1339,11 +1339,11 @@ def init_g2_K_RHD(g2_A):
 
 def init_g2_L_RHD(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "s":Generator("s")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "s":Generator("s",Z2grading=1)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i0,g2_A.idem_by_name.i0)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i1,g2_A.idem_by_name.i1)
@@ -1451,11 +1451,11 @@ def init_g2_L_RHD(g2_A):
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_N_LHD(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "s":Generator("s")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "s":Generator("s",Z2grading=1)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i3,g2_A.idem_by_name.i3)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i2,g2_A.idem_by_name.i2)
@@ -1579,11 +1579,11 @@ def init_g2_N_LHD(g2_A):
 
 def init_g2_L_LHD(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "s":Generator("s")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "s":Generator("s",Z2grading=0)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i0,g2_A.idem_by_name.i0)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i1,g2_A.idem_by_name.i1)
@@ -1681,11 +1681,11 @@ def init_g2_L_LHD(g2_A):
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_N_RHD(g2_A):
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "s":Generator("s")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "s":Generator("s",Z2grading=0)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i3,g2_A.idem_by_name.i3)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i2,g2_A.idem_by_name.i2)
@@ -1798,23 +1798,24 @@ def init_g2_N_RHD(g2_A):
     return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_B)")
 
 def init_g2_T_LHD(g2_A):
+    a=0
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "t1":Generator("t1"),
-                "t2":Generator("t2"),
-                "t3":Generator("t3"),
-                "t4":Generator("t4"),
-                "t5":Generator("t5"),
-                "t6":Generator("t6"),
-                "t7":Generator("t7"),
-                "t8":Generator("t8"),
-                "t9":Generator("t9"),
-                "t10":Generator("t10"),
-                "t11":Generator("t11"),
-                "t12":Generator("t12")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "t1":Generator("t1",Z2grading=a %2),
+                "t2":Generator("t2",Z2grading=(a+1) %2),
+                "t3":Generator("t3",Z2grading=(a+1) %2),
+                "t4":Generator("t4",Z2grading=a %2),
+                "t5":Generator("t5",Z2grading=(a+1) %2),
+                "t6":Generator("t6",Z2grading=a %2),
+                "t7":Generator("t7",Z2grading=(a+1) %2),
+                "t8":Generator("t8",Z2grading=a %2),
+                "t9":Generator("t9",Z2grading=(a+1) %2),
+                "t10":Generator("t10",Z2grading=a),
+                "t11":Generator("t11",Z2grading=a),
+                "t12":Generator("t12",Z2grading=(a+1)%2)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i0,g2_A.idem_by_name.i0)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i1,g2_A.idem_by_name.i1)
@@ -2019,23 +2020,24 @@ def init_g2_T_LHD(g2_A):
     return DA_bimodule(gen_by_name,arrows,g2_A,g2_A,name="N(τ_C^{-1})")
 # next bimodule we derive from the previous one by horizontal reflection
 def init_g2_T_RHD(g2_A):
+    a=0
     gen_by_name=AttrDict({
-                "x0": Generator("x0"),
-                "x1": Generator("x1"),
-                "x2": Generator("x2"),
-                "x3": Generator("x3"),
-                "t1":Generator("t1"),
-                "t2":Generator("t2"),
-                "t3":Generator("t3"),
-                "t4":Generator("t4"),
-                "t5":Generator("t5"),
-                "t6":Generator("t6"),
-                "t7":Generator("t7"),
-                "t8":Generator("t8"),
-                "t9":Generator("t9"),
-                "t10":Generator("t10"),
-                "t11":Generator("t11"),
-                "t12":Generator("t12")
+                "x0": Generator("x0",Z2grading=0),
+                "x1": Generator("x1",Z2grading=0),
+                "x2": Generator("x2",Z2grading=0),
+                "x3": Generator("x3",Z2grading=0),
+                "t1":Generator("t1",Z2grading=a %2),
+                "t2":Generator("t2",Z2grading=(a+1) %2),
+                "t3":Generator("t3",Z2grading=(a+1) %2),
+                "t4":Generator("t4",Z2grading=a %2),
+                "t5":Generator("t5",Z2grading=(a+1) %2),
+                "t6":Generator("t6",Z2grading=a %2),
+                "t7":Generator("t7",Z2grading=(a+1) %2),
+                "t8":Generator("t8",Z2grading=a %2),
+                "t9":Generator("t9",Z2grading=(a+1) %2),
+                "t10":Generator("t10",Z2grading=a),
+                "t11":Generator("t11",Z2grading=a),
+                "t12":Generator("t12",Z2grading=(a+1)%2)
                 })
     gen_by_name.x0.add_idems(g2_A.idem_by_name.i3,g2_A.idem_by_name.i3)
     gen_by_name.x1.add_idems(g2_A.idem_by_name.i2,g2_A.idem_by_name.i2)

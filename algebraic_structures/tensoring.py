@@ -41,7 +41,7 @@ def da_da_box_tensor_product(DAbimodule1,DAbimodule2,to_check=False):
             if generator_from_DA1.idem.right!=generator_from_DA2.idem.left:
                 continue
             else:
-                generators_of_tensor_product_by_name[generator_from_DA1.name+'⊗'+generator_from_DA2.name]=Generator(generator_from_DA1.name+'⊗'+generator_from_DA2.name)
+                generators_of_tensor_product_by_name[generator_from_DA1.name+'⊗'+generator_from_DA2.name]=Generator(generator_from_DA1.name+'⊗'+generator_from_DA2.name, Z2grading=(generator_from_DA1.Z2grading+generator_from_DA2.Z2grading) % 2)
                 generators_of_tensor_product_by_name[generator_from_DA1.name+'⊗'+generator_from_DA2.name].add_idems(generator_from_DA1.idem.left,generator_from_DA2.idem.right)
 
     #we want to compute differential now
@@ -127,7 +127,7 @@ def a_d_box_tensor_product(Right_A_module,Left_D_module,to_check=True):
             if generator_from_A.idem.right!=generator_from_D.idem.left:
                 continue
             else:
-                generators_of_tensor_product_by_name[generator_from_A.name+'⊗'+generator_from_D.name]=Generator(generator_from_A.name+'⊗'+generator_from_D.name)
+                generators_of_tensor_product_by_name[generator_from_A.name+'⊗'+generator_from_D.name]=Generator(generator_from_A.name+'⊗'+generator_from_D.name, Z2grading=(generator_from_A.Z2grading+generator_from_D.Z2grading) % 2)
 
     #we want to compute differential now
     arrows_in_tensor_product=Bunch_of_arrows()
@@ -194,7 +194,7 @@ def dd_a_box_tensor_product(DD,Left_A,to_check=True):
             if generator_from_DD.idem.right!=generator_from_A.idem.left:
                 continue
             else:
-                generators_of_tensor_product_by_name[generator_from_DD.name+'⊗'+generator_from_A.name]=Generator(generator_from_DD.name+'⊗'+generator_from_A.name)
+                generators_of_tensor_product_by_name[generator_from_DD.name+'⊗'+generator_from_A.name]=Generator(generator_from_DD.name+'⊗'+generator_from_A.name, Z2grading=(generator_from_DD.Z2grading+generator_from_A.Z2grading )% 2)
                 generators_of_tensor_product_by_name[generator_from_DD.name+'⊗'+generator_from_A.name].add_idems(generator_from_DD.idem.left,0)
 
     #we want to compute differential now
